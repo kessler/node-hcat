@@ -1,0 +1,33 @@
+{
+  "name": "hcat",
+  "version": "0.0.1",
+  "description": "Pipe html into your browser from command line",
+  "main": "index.js",
+  "bin": {
+    "hcat": "index.js"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kessler/node-hcat"
+  },
+  "keywords": [
+    "pipe",
+    "browser",
+    "cat",
+    "hcat"
+  ],
+  "author": "Yaniv Kessler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kessler/node-hcat/issues"
+  },
+  "dependencies": {
+    "find-port": "1.0.0",
+    "optimist": "~0.6.0",
+    "rc": "~0.3.3",
+    "text-table": "~0.2.0"
+  }
+}
