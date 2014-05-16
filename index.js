@@ -35,20 +35,15 @@ function handler(request, response) {
 
 	stream.pipe(response)
 
-	response.on('finish', function () {
+	response.on('finish', function() {
 		process.exit(0)
 	})
 }
 
 function cat(port) {
 	var server = http.createServer(handler)
-	
-	server.on('error', function(err) {
-		console.error(err)
-		process.exit(1)
-	})
 
-	server.on('listening', function(){
+	server.on('listening', function() {
 		var command = (process.platform === 'win32') ? 'start' : 'open'
 		child.exec(command + ' http://127.0.0.1:' + port)
 	})
