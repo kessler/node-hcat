@@ -29,7 +29,7 @@ function handler(request, response) {
 var server = http.createServer(handler)
 
 server.on('listening', function() {
-  opn('http://127.0.0.1:' + server.address().port)
+  opn('http://localhost:' + server.address().port)
 })
 
-server.listen(config.port || 0)
+server.listen(config.port || 0, 'localhost')
