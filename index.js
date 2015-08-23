@@ -13,6 +13,9 @@ if (argv.usage) {
 }
 
 function handler(request, response) {
+  // Only accept one request
+  server.close();
+
 	var contentType = 'text/html'
 
 	var stream = process.stdin
@@ -20,10 +23,6 @@ function handler(request, response) {
 	response.setHeader('Content-Type', contentType)
 
 	stream.pipe(response)
-
-	response.on('finish', function() {
-		process.exit(0)
-	})
 }
 
 var server = http.createServer(handler)
