@@ -5,12 +5,17 @@ You should take a look at [scat](https://github.com/hughsk/scat) which pipes jav
 
 ## usage
 ```
- --port                   set a port for this hcat execution
+ --port         set a port for this hcat execution, defaults to 0 (random port)
+--hostname     set the hostname for this hcat execution, defaults to localhost
+--contentType  set the content type header for this hcat execution, defaults to text/html
 ```
-- _An available port between 8080 - 8181 will be automatically picked if --port is not specified_
 
 ## example
 ```
 > npm install -g hcat
 
 > echo '<hr>' | hcat
+
+```
+
+Many thanks to all the [contributors](contributors.md)

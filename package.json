@@ -28,5 +28,43 @@
     "opn": "^3.0.2",
     "rc": "~0.3.3",
     "text-table": "~0.2.0"
-  }
+  },
+  "contributors": [
+    {
+      "name": "Stephen Whitmore",
+      "email": null,
+      "url": "https://github.com/noffle",
+      "contributions": 1,
+      "additions": 6,
+      "deletions": 6,
+      "hireable": null
+    },
+    {
+      "name": "Yaniv Kessler",
+      "email": null,
+      "url": "https://github.com/kessler",
+      "contributions": 15,
+      "additions": 240,
+      "deletions": 83,
+      "hireable": null
+    },
+    {
+      "name": null,
+      "email": null,
+      "url": "https://github.com/aviramst",
+      "contributions": 2,
+      "additions": 26,
+      "deletions": 30,
+      "hireable": null
+    },
+    {
+      "name": "Brian White",
+      "email": null,
+      "url": "https://github.com/mscdex",
+      "contributions": 7,
+      "additions": 15,
+      "deletions": 32,
+      "hireable": true
+    }
+  ]
 }
