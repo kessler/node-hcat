@@ -25,7 +25,6 @@
     "url": "https://github.com/kessler/node-hcat/issues"
   },
   "dependencies": {
-    "find-port": "1.0.0",
     "opn": "^3.0.2",
     "optimist": "~0.6.0",
     "rc": "~0.3.3",
