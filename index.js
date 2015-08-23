@@ -5,7 +5,8 @@ var opn = require('opn')
 var rc = module.require('rc')
 var config = rc('hcat', {
 	port: 0,
-	hostname: 'localhost'
+	hostname: 'localhost',
+	contentType: 'text/html'
 })
 
 if (config.usage) {
@@ -17,11 +18,9 @@ function handler(request, response) {
 	// Only accept one request
 	this.close();
 
-	var contentType = 'text/html'
-
 	var stream = process.stdin
 
-	response.setHeader('Content-Type', contentType)
+	response.setHeader('Content-Type', config.contentType)
 
 	stream.pipe(response)
 }
