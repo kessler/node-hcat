@@ -2,8 +2,8 @@
 
 
 var http = require('http')
-var child = require('child_process')
 var findPort = require('find-port')
+var opn = require('opn')
 var rc = module.require('rc')
 var argv = require('optimist').argv
 var config = rc('hcat', {}, argv)
@@ -44,8 +44,7 @@ function cat(port) {
 	var server = http.createServer(handler)
 
 	server.on('listening', function() {
-		var command = (process.platform === 'win32') ? 'start' : 'open'
-		child.exec(command + ' http://127.0.0.1:' + port)
+		opn('http://127.0.0.1:' + port)
 	})
 
 	server.listen(port)
