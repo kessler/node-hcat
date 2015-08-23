@@ -14,7 +14,7 @@ if (argv.usage) {
 
 function handler(request, response) {
   // Only accept one request
-  server.close();
+  this.close();
 
 	var contentType = 'text/html'
 
@@ -25,7 +25,8 @@ function handler(request, response) {
 	stream.pipe(response)
 }
 
-var server = http.createServer(handler)
+var server = http.createServer();
+server.once('request', handler);
 
 server.on('listening', function() {
   opn('http://localhost:' + server.address().port)
