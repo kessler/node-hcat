@@ -3,10 +3,9 @@
 var http = require('http')
 var opn = require('opn')
 var rc = module.require('rc')
-var argv = require('optimist').argv
-var config = rc('hcat', {}, argv)
+var config = rc('hcat', {})
 
-if (argv.usage) {
+if (config.usage) {
 	console.log(require('./usage.js'))
 	process.exit(1)
 }
