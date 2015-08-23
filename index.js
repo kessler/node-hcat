@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 var http = require('http')
 var opn = require('opn')
 var rc = module.require('rc')
@@ -13,8 +12,8 @@ if (argv.usage) {
 }
 
 function handler(request, response) {
-  // Only accept one request
-  this.close();
+	// Only accept one request
+	this.close();
 
 	var contentType = 'text/html'
 
@@ -29,7 +28,7 @@ var server = http.createServer();
 server.once('request', handler);
 
 server.on('listening', function() {
-  opn('http://localhost:' + server.address().port)
+	opn('http://localhost:' + server.address().port)
 })
 
 server.listen(config.port || 0, 'localhost')
