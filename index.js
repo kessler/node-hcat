@@ -9,7 +9,7 @@ var config = rc('hcat', {}, argv)
 
 if (argv.usage) {
 	console.log(require('./usage.js'))
-	process.exit(0)
+	process.exit(1)
 }
 
 function handler(request, response) {
