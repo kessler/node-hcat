@@ -16,4 +16,4 @@ You should take a look at [scat](https://github.com/hughsk/scat) which pipes jav
 > echo '<hr>' | hcat
 ```
 
-Many thanks to all the [contributors](contributors.md)
+Many thanks to all the contributors
