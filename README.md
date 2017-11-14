@@ -30,6 +30,8 @@ const fs = require('fs')
 // config is optional
 hcat(fs.createReadStream('foo.html'), { port: 8080 })
 
+// string or buffer instead of stream
+hcat('<h1>test 123</h1>', { port: 8080 })
 ```
 
 Many thanks to all the contributors

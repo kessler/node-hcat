@@ -25,8 +25,8 @@
     "url": "https://github.com/kessler/node-hcat/issues"
   },
   "dependencies": {
-    "opn": "^3.0.2",
-    "rc": "~0.3.3",
+    "opn": "^5.1.0",
+    "rc": "^1.2.2",
     "text-table": "~0.2.0"
   },
   "contributors": [

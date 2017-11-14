@@ -1,13 +1,19 @@
-var http = require('http')
-var spawn = require('child_process').spawn
-var opn = require('opn')
-var defaultConfig = require('./config')
+const http = require('http')
+const spawn = require('child_process').spawn
+const opn = require('opn')
+const defaultConfig = require('./config')
+const { isString } = require('util')
 
 /**
+ *	@param {Stream|Buffer|String} data
+ *	@param {object} config
+ *	@param {number} config.port
+ *	@param {string} config.hostname
+ *	@param {string} config.contentType
  *
- *
+ *	@returns {object} server
  */
-module.exports = function(stream, config) {
+module.exports = function(data, config) {
 	config = config || {}
 
 	if (config.port === undefined) {
@@ -22,28 +28,33 @@ module.exports = function(stream, config) {
 		config.contentType = defaultConfig.contentType
 	}
 
-	function handler(request, response) {
+	let server = http.createServer()
+	server.once('request', (request, response) => {
 		// Only accept one request
-		this.close()
+		server.close()
 
 		response.setHeader('Content-Type', config.contentType)
 
-		stream.pipe(response)
-	}
+		if (Buffer.isBuffer(data) || isString(data)) {
+			response.end(data)
+		} else {
+			// ass-u-me it's a stream 
+			data.pipe(response)
+		}
+	})
 
-	var server = http.createServer()
-	server.once('request', handler)
-
-	server.on('listening', function() {
-		var url = 'http://' + config.hostname + ':' + server.address().port
+	server.on('listening', () => {
+		let url = 'http://' + config.hostname + ':' + server.address().port
 
 		if (!process.env.BROWSER) {
 			console.error('The environment variable $BROWSER is not set. Falling back to default opening mechanism.')
-			opn('http://' + config.hostname + ':' + server.address().port)
+			opn('http://' + config.hostname + ':' + server.address().port, { wait: false })
 		} else {
-			spawn(process.env.BROWSER, [url])
+			spawn(process.env.BROWSER, [url], { detached: true })
 		}
 	})
 
 	server.listen(config.port, config.hostname)
+
+	return server
 }
