@@ -1,6 +1,6 @@
 {
   "name": "hcat",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "pipe html into your browser from command line",
   "main": "index.js",
   "bin": {
@@ -29,7 +29,9 @@
     "rc": "^1.2.2",
     "text-table": "~0.2.0"
   },
-  "engines" : { "node" : ">=7" },
+  "engines": {
+    "node": ">=7"
+  },
   "contributors": [
     {
       "name": "Stephen Whitmore",
