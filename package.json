@@ -29,6 +29,7 @@
     "rc": "^1.2.2",
     "text-table": "~0.2.0"
   },
+  "engines" : { "node" : ">=7" },
   "contributors": [
     {
       "name": "Stephen Whitmore",
@@ -41,7 +42,7 @@
       "url": "https://github.com/kessler"
     },
     {
-      "name": null,
+      "name": "aviramst",
       "email": null,
       "url": "https://github.com/aviramst"
     },
