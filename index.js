@@ -10,6 +10,7 @@ const { isString } = require('util')
  *	@param {number} config.port
  *	@param {string} config.hostname
  *	@param {string} config.contentType
+ *	@param {boolean} config.serveOnce
  *
  *	@returns {object} server
  */
@@ -28,10 +29,19 @@ module.exports = function(data, config) {
 		config.contentType = defaultConfig.contentType
 	}
 
+	if (config.serveOnce === undefined) {
+		config.serveOnce = defaultConfig.serveOnce
+	} else {
+		config.serveOnce = (config.serveOnce === 'true' || config.serveOnce === true || config.serveOnce === 1)
+	}
+
 	let server = http.createServer()
 	server.once('request', (request, response) => {
-		// Only accept one request
-		server.close()
+		
+		// Only serve one request
+		if (config.serveOnce) {
+			server.close()
+		}
 
 		response.setHeader('Content-Type', config.contentType)
 
