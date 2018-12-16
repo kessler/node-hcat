@@ -1,6 +1,6 @@
 {
   "name": "hcat",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "pipe html into your browser from command line",
   "main": "index.js",
   "bin": {
