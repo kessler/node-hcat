@@ -7,7 +7,7 @@
     "hcat": "hcat.js"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "cat test.html | node hcat"
   },
   "repository": {
     "type": "git",
