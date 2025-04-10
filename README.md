@@ -15,6 +15,7 @@ echo '<hr>' | hcat
 --port              set a port for this hcat execution, defaults to 0 (random port)
 --hostname     set the hostname for this hcat execution, defaults to localhost
 --contentType  set the content type header for this hcat execution, defaults to text/html
+--contentSecurityPolicy set the content security policy header for this hcat execution, will not be added if not specified
 ```
 
 ## API

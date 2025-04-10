@@ -45,6 +45,10 @@ module.exports = function(data, config) {
 
 		response.setHeader('Content-Type', config.contentType)
 
+		if (config.contentSecurityPolicy) {
+			response.setHeader('Content-Security-Policy', config.contentSecurityPolicy)
+		}
+
 		if (Buffer.isBuffer(data) || isString(data)) {
 			response.end(data)
 		} else {

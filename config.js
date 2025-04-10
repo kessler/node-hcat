@@ -4,5 +4,6 @@ module.exports = rc('hcat', {
 	port: 0,
 	hostname: 'localhost',
 	contentType: 'text/html',
-	serveOnce: true
+	serveOnce: true,
+	contentSecurityPolicy: undefined
 })
