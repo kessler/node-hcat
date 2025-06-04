@@ -49,7 +49,7 @@ module.exports = function(data, config) {
 			response.setHeader('Content-Security-Policy', config.contentSecurityPolicy)
 		}
 
-		if (Buffer.isBuffer(data) || isString(data)) {
+		if (Buffer.isBuffer(data) || typeof data === 'string') {
 			response.end(data)
 		} else {
 			// ass-u-me it's a stream 
