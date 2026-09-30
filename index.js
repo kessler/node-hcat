@@ -45,7 +45,7 @@ module.exports = function(data, config) {
 		})
 	}
 
-	server.once('request', (request, response) => {
+	server[config.serveOnce ? 'once' : 'on']('request', (request, response) => {
 
 		// Only serve one request
 		if (config.serveOnce) {

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.3
+
+### Fixed
+- `serveOnce: false` now serves every request. Previously only the first request got a response and later ones (e.g. a page refresh) hung.
+
 ## 2.2.2
 
 ### Fixed
