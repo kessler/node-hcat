@@ -36,11 +36,21 @@ module.exports = function(data, config) {
 	}
 
 	let server = http.createServer()
+	const sockets = new Set()
+
+	if (config.serveOnce) {
+		server.on('connection', (socket) => {
+			sockets.add(socket)
+			socket.once('close', () => sockets.delete(socket))
+		})
+	}
+
 	server.once('request', (request, response) => {
-		
+
 		// Only serve one request
 		if (config.serveOnce) {
 			server.close()
+			response.once('finish', () => closeSockets(sockets))
 		}
 
 		response.setHeader('Content-Type', config.contentType)
@@ -52,7 +62,13 @@ module.exports = function(data, config) {
 		if (Buffer.isBuffer(data) || typeof data === 'string') {
 			response.end(data)
 		} else {
-			// ass-u-me it's a stream 
+			// ass-u-me it's a stream
+			// without a listener a source error crashes the process, and pipe() never ends the response on error
+			data.once('error', (err) => {
+				console.error(err)
+				data.unpipe(response)
+				response.end()
+			})
 			data.pipe(response)
 		}
 	})
@@ -71,4 +87,19 @@ module.exports = function(data, config) {
 	server.listen(config.port, config.hostname)
 
 	return server
+}
+
+// keep-alive sockets (and extra requests like /favicon.ico) would keep the server
+// alive after serving once. end() lets the response drain before closing, destroy()
+// is a fallback for clients that never close their side
+function closeSockets(sockets) {
+	for (const socket of sockets) {
+		socket.end()
+	}
+
+	setTimeout(() => {
+		for (const socket of sockets) {
+			socket.destroy()
+		}
+	}, 1000).unref()
 }

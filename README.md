@@ -16,6 +16,7 @@ echo '<hr>' | hcat
 --hostname     set the hostname for this hcat execution, defaults to localhost
 --contentType  set the content type header for this hcat execution, defaults to text/html
 --contentSecurityPolicy set the content security policy header for this hcat execution, will not be added if not specified
+--serveOnce    serve a single request and exit, defaults to true. open connections (keep-alive, extra requests such as /favicon.ico) are closed once the response is sent
 ```
 
 ## API
